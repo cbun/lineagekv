@@ -1,0 +1,26 @@
+dataset:
+  path: data/generated/context_rot_v1.jsonl
+  base_scenarios: 50
+  distractor_ratios: [0.0, 0.25, 0.5, 0.75, 0.9]
+  variants:
+    - current_late
+    - current_early_stale_late
+    - stale_repeated_after
+    - wrong_duplicate_10x
+    - split_relevant_middle
+
+evaluation:
+  strategies:
+    - full
+    - recency
+    - retrieval
+    - dedup_retrieval
+    - recency_weighted_retrieval
+    - contradiction_oracle
+    - structured_state
+    - hybrid
+    - random_control
+  token_budget: 1200
+  retrieval_top_k: 8
+  model: heuristic
+  deterministic_seed: 20260515

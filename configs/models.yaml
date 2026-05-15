@@ -1,0 +1,19 @@
+models:
+  heuristic:
+    adapter: heuristic
+    description: "Deterministic local sanity model. Useful for pipeline checks, not a substitute for LLM evidence."
+  qwen25_1_5b_mlx:
+    adapter: mlx
+    model_id: Qwen/Qwen2.5-1.5B-Instruct
+    max_tokens: 256
+    temperature: 0.0
+  phi4_mini_local:
+    adapter: transformers
+    model_id: microsoft/Phi-4-mini-instruct
+    max_tokens: 256
+    temperature: 0.0
+  qwen3_8b_ollama:
+    adapter: ollama
+    model_id: qwen3:8b
+    max_tokens: 256
+    temperature: 0.0

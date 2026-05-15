@@ -1,0 +1,33 @@
+[project]
+name = "lineagekv"
+version = "0.1.0"
+description = "Lineage-guided stale-memory KV-cache repair benchmark and research artifact."
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = [
+  "matplotlib",
+  "numpy",
+  "pandas",
+  "pydantic",
+  "pyyaml",
+  "scikit-learn",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "torch"]
+datasets = ["huggingface-hub"]
+local-models = ["mlx-lm", "sentence-transformers"]
+transformers = ["accelerate", "torch", "transformers"]
+all = [
+  "accelerate",
+  "huggingface-hub",
+  "mlx-lm",
+  "pytest",
+  "sentence-transformers",
+  "torch",
+  "transformers",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

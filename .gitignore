@@ -1,0 +1,76 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+results/.matplotlib/
+
+# Local continuity notes are useful in this workspace but should not be part of
+# the public research repo.
+memory/
+notes/
+
+# Raw external datasets and cloned repositories are large, license-sensitive,
+# and reproducible from scripts/fetch_datasets.py or the source URLs.
+data/raw/
+data/processed/
+external/
+
+# Keep docs focused for the public artifact. Exploratory run memos and local
+# process notes remain outside the tracked release unless explicitly promoted.
+docs/*
+!docs/README.md
+!docs/kv_address_content_causal_map.md
+!docs/kv_cache_repair_technical_report.md
+!docs/kv_lineage_targeting_validity.md
+!docs/kv_memory_lineage_protocol.md
+!docs/kv_memory_store_lineage_integration.md
+!docs/kv_repair_phase_diagram.md
+
+# Generated datasets are ignored by default. Keep only the small probe files
+# needed to rebuild the public release benchmarks.
+data/generated/*
+!data/generated/agent_memory_action_probe64.jsonl
+!data/generated/agent_memory_messy_probe40.jsonl
+!data/generated/agent_memory_update_nonce_option_probe80.jsonl
+!data/generated/git_doc_nonce_option_audited_history_four_repo_probe80.jsonl
+!data/generated/agent_memory_action_test32.jsonl
+!data/generated/agent_memory_long_context_test2_d236_s4.jsonl
+!data/generated/agent_memory_long_context_test32_d48_s4.jsonl
+
+# Most result files are lab artifacts. Keep the compact public/paper artifacts
+# and the small source JSONL files required by the public repro script.
+results/*
+!results/kv/
+results/kv/*
+!results/kv/README.md
+!results/kv/kv_public_*.csv
+!results/kv/kv_public_*.json
+!results/kv/kv_public_release_targeting_audit.csv
+!results/kv/kv_mlx_qwen25_7b_4bit_agent_memory_long_context_test32_refined_policies_regraded.jsonl
+!results/kv/kv_mlx_qwen25_7b_4bit_agent_memory_long_context_test32_refined_policies_regraded_persistent_runtime.csv
+!results/kv/kv_mlx_qwen25_7b_4bit_agent_memory_long_context_test4_d230_s4_persistent_runtime.csv
+!results/kv/kv_mlx_qwen25_7b_4bit_agent_memory_long_context_test2_d236_s4_persistent_runtime.csv
+!results/kv/kv_qwen3_0_6b_agent_memory_action_test32_evidence_full.jsonl
+!results/kv/kv_qwen3_0_6b_agent_memory_action_test32_evidence_full_summary.csv
+!results/kv/kv_qwen25_0_5b_agent_memory_text_timestamp_decile1_full80.jsonl
+!results/kv/kv_address_content_*.csv
+!results/kv/kv_final_nonce_option_*_targeting_ablations.csv
+!results/kv/kv_tinyllama_1_1b_agent_memory_action_slice8_cpu.jsonl
+!results/kv/kv_tinyllama_1_1b_agent_memory_action_slice8_cpu_summary.csv
+!results/kv/kv_gemma4_e4b_raw_cache_compat.json
+!results/kv/kv_qwen35_9b_raw_cache_compat.json
+!results/kv/kv_qwen35_9b_adversarial_lineage_d0_probe4_nothink_cpu*.csv
+!results/kv/kv_qwen35_9b_adversarial_lineage_d0_probe4_nothink_cpu.jsonl
+!results/kv/kv_gemma4_e4b_adversarial_lineage_crossdomain32_gemma4prompt_matrix*.csv
+!results/kv/kv_gemma4_e4b_adversarial_lineage_task_state_offset100_4_gemma4prompt_matrix_cpu.jsonl
+!results/kv/kv_gemma4_e4b_adversarial_lineage_knowledge_base_offset120_4_gemma4prompt_matrix_cpu.jsonl
+
+# LaTeX build byproducts.
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.toc
+paper/*.fls
+paper/*.fdb_latexmk

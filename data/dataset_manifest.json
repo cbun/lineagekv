@@ -1,0 +1,473 @@
+[
+  {
+    "name": "cleaned-longmemeval-s",
+    "path": "data/raw/kellyhongg__cleaned-longmemeval-s/longmemeval_s_cleaned.csv",
+    "bytes": 158146216,
+    "records": 306,
+    "use": "primary chat-memory / updates / temporal / abstention"
+  },
+  {
+    "name": "locomo raw",
+    "path": "data/raw/Percena__locomo-mc10/raw/locomo10.json",
+    "bytes": 2805274,
+    "top_level_type": "list",
+    "top_level_len": 10,
+    "use": "long multi-session conversation memory"
+  },
+  {
+    "name": "NoLiMa subset",
+    "path": "data/raw/amodaresi__NoLiMa",
+    "bytes": 8342694,
+    "needle_files": 6,
+    "haystack_files": 10,
+    "use": "latent/semantic retrieval beyond lexical overlap"
+  },
+  {
+    "name": "LongBench v1",
+    "path": "data/raw/THUDM__LongBench",
+    "bytes": 366705323,
+    "jsonl_files": 34,
+    "records": 8418,
+    "use": "broad long-context baseline / sanity check"
+  },
+  {
+    "name": "RULER code",
+    "path": "external/RULER",
+    "bytes": 8745944,
+    "use": "synthetic generator for controlled context length/task complexity"
+  },
+  {
+    "name": "express git-history lineage",
+    "path": "data/generated/git_history_express_lineage.jsonl",
+    "records": 80,
+    "source_repo": "external/git_history/express",
+    "source": "https://github.com/expressjs/express",
+    "source_fact": "package.json::version across git tags",
+    "use": "less-synthetic supersession lineage benchmark from real revision history"
+  },
+  {
+    "name": "axios git-history lineage",
+    "path": "data/generated/git_history_axios_lineage.jsonl",
+    "records": 80,
+    "source_repo": "external/git_history/axios",
+    "source": "https://github.com/axios/axios",
+    "source_fact": "package.json::version across git tags",
+    "use": "second-repo git-history lineage benchmark for package-version supersession"
+  },
+  {
+    "name": "express git-value nonce-option lineage probe",
+    "path": "data/generated/git_value_nonce_option_history_express_lineage_probe80.jsonl",
+    "records": 80,
+    "source_repo": "external/git_history/express",
+    "source": "https://github.com/expressjs/express",
+    "source_fact": "nonce-coded options generated from package.json::version git-history lineage rows",
+    "use": "structured package-version currentness control without fixed option-label priors"
+  },
+  {
+    "name": "axios git-value nonce-option lineage probe",
+    "path": "data/generated/git_value_nonce_option_history_axios_lineage_probe80.jsonl",
+    "records": 80,
+    "source_repo": "external/git_history/axios",
+    "source": "https://github.com/axios/axios",
+    "source_fact": "nonce-coded options generated from package.json::version git-history lineage rows",
+    "use": "second-repo structured package-version currentness control without fixed option-label priors"
+  },
+  {
+    "name": "git-value nonce-option two-repo probe",
+    "path": "data/generated/git_value_nonce_option_history_two_repo_probe80.jsonl",
+    "records": 80,
+    "source_repo": "external/git_history/express + external/git_history/axios",
+    "source": "https://github.com/expressjs/express + https://github.com/axios/axios",
+    "source_fact": "balanced nonce-coded package-version options from Express and Axios git-history lineage rows",
+    "use": "cross-repo structured currentness probe for KV value-edit replication"
+  },
+  {
+    "name": "express git-doc sentence lineage",
+    "path": "data/generated/git_doc_history_express_lineage.jsonl",
+    "records": 60,
+    "source_repo": "external/git_history/express",
+    "source": "https://github.com/expressjs/express",
+    "source_fact": "changed natural-language documentation/changelog lines from git diffs",
+    "use": "natural-language revision lineage benchmark"
+  },
+  {
+    "name": "axios git-doc sentence lineage",
+    "path": "data/generated/git_doc_history_axios_lineage.jsonl",
+    "records": 60,
+    "source_repo": "external/git_history/axios",
+    "source": "https://github.com/axios/axios",
+    "source_fact": "changed natural-language documentation lines from git diffs",
+    "use": "natural-language revision lineage benchmark"
+  },
+  {
+    "name": "git-doc sentence lineage two-repo probe",
+    "path": "data/generated/git_doc_history_two_repo_lineage_probe20.jsonl",
+    "records": 20,
+    "source_repo": "external/git_history/express + external/git_history/axios",
+    "source": "https://github.com/expressjs/express + https://github.com/axios/axios",
+    "source_fact": "first 10 doc-sentence lineage rows from each repo",
+    "use": "small KV probe slice for natural-language revision lineage"
+  },
+  {
+    "name": "express git-doc phrase lineage",
+    "path": "data/generated/git_doc_phrase_history_express_lineage.jsonl",
+    "records": 54,
+    "source_repo": "external/git_history/express",
+    "source": "https://github.com/expressjs/express",
+    "source_fact": "short changed phrases extracted from documentation/changelog diff pairs",
+    "use": "more answerable natural-language revision lineage benchmark"
+  },
+  {
+    "name": "axios git-doc phrase lineage",
+    "path": "data/generated/git_doc_phrase_history_axios_lineage.jsonl",
+    "records": 40,
+    "source_repo": "external/git_history/axios",
+    "source": "https://github.com/axios/axios",
+    "source_fact": "short changed phrases extracted from documentation diff pairs",
+    "use": "more answerable natural-language revision lineage benchmark"
+  },
+  {
+    "name": "git-doc phrase lineage two-repo probe",
+    "path": "data/generated/git_doc_phrase_history_two_repo_probe20.jsonl",
+    "records": 20,
+    "source_repo": "external/git_history/express + external/git_history/axios",
+    "source": "https://github.com/expressjs/express + https://github.com/axios/axios",
+    "source_fact": "first 10 doc-phrase lineage rows from each repo",
+    "use": "small KV probe slice for phrase-level natural-language revision lineage"
+  },
+  {
+    "name": "express git-doc audited phrase lineage",
+    "path": "data/generated/git_doc_phrase_audited_history_express_lineage.jsonl",
+    "records": 10,
+    "source_repo": "external/git_history/express",
+    "source": "https://github.com/expressjs/express",
+    "source_fact": "quality-filtered short changed phrases from documentation/changelog diff pairs",
+    "use": "audited phrase-level natural-language revision lineage benchmark"
+  },
+  {
+    "name": "axios git-doc audited phrase lineage",
+    "path": "data/generated/git_doc_phrase_audited_history_axios_lineage.jsonl",
+    "records": 18,
+    "source_repo": "external/git_history/axios",
+    "source": "https://github.com/axios/axios",
+    "source_fact": "quality-filtered short changed phrases from documentation diff pairs",
+    "use": "audited phrase-level natural-language revision lineage benchmark"
+  },
+  {
+    "name": "git-doc audited phrase lineage two-repo probe",
+    "path": "data/generated/git_doc_phrase_audited_history_two_repo_probe.jsonl",
+    "records": 24,
+    "source_repo": "external/git_history/express + external/git_history/axios",
+    "source": "https://github.com/expressjs/express + https://github.com/axios/axios",
+    "source_fact": "quality-filtered doc-phrase rows from the first 40 rows of each repo",
+    "use": "small audited KV probe slice for phrase-level natural-language revision lineage"
+  },
+  {
+    "name": "requests git-doc sentence lineage",
+    "path": "data/generated/git_doc_history_requests_lineage.jsonl",
+    "records": 120,
+    "source_repo": "external/git_history/requests",
+    "source": "https://github.com/psf/requests",
+    "source_fact": "changed natural-language documentation/changelog lines from git diffs",
+    "use": "natural-language revision lineage benchmark"
+  },
+  {
+    "name": "flask git-doc sentence lineage",
+    "path": "data/generated/git_doc_history_flask_lineage.jsonl",
+    "records": 120,
+    "source_repo": "external/git_history/flask",
+    "source": "https://github.com/pallets/flask",
+    "source_fact": "changed natural-language documentation/changelog lines from git diffs",
+    "use": "natural-language revision lineage benchmark"
+  },
+  {
+    "name": "requests git-doc phrase lineage",
+    "path": "data/generated/git_doc_phrase_history_requests_lineage.jsonl",
+    "records": 80,
+    "source_repo": "external/git_history/requests",
+    "source": "https://github.com/psf/requests",
+    "source_fact": "short changed phrases extracted from documentation/changelog diff pairs",
+    "use": "more answerable natural-language revision lineage benchmark"
+  },
+  {
+    "name": "flask git-doc phrase lineage",
+    "path": "data/generated/git_doc_phrase_history_flask_lineage.jsonl",
+    "records": 100,
+    "source_repo": "external/git_history/flask",
+    "source": "https://github.com/pallets/flask",
+    "source_fact": "short changed phrases extracted from documentation/changelog diff pairs",
+    "use": "more answerable natural-language revision lineage benchmark"
+  },
+  {
+    "name": "requests git-doc audited phrase lineage",
+    "path": "data/generated/git_doc_phrase_audited_history_requests_lineage.jsonl",
+    "records": 62,
+    "source_repo": "external/git_history/requests",
+    "source": "https://github.com/psf/requests",
+    "source_fact": "quality-filtered short changed phrases from documentation/changelog diff pairs",
+    "use": "audited phrase-level natural-language revision lineage benchmark"
+  },
+  {
+    "name": "flask git-doc audited phrase lineage",
+    "path": "data/generated/git_doc_phrase_audited_history_flask_lineage.jsonl",
+    "records": 72,
+    "source_repo": "external/git_history/flask",
+    "source": "https://github.com/pallets/flask",
+    "source_fact": "quality-filtered short changed phrases from documentation/changelog diff pairs",
+    "use": "audited phrase-level natural-language revision lineage benchmark"
+  },
+  {
+    "name": "git-doc audited phrase lineage four-repo corpus",
+    "path": "data/generated/git_doc_phrase_audited_history_four_repo_lineage.jsonl",
+    "records": 162,
+    "source_repo": "external/git_history/express + external/git_history/axios + external/git_history/requests + external/git_history/flask",
+    "source": "https://github.com/expressjs/express + https://github.com/axios/axios + https://github.com/psf/requests + https://github.com/pallets/flask",
+    "source_fact": "quality-filtered doc-phrase rows across four real documentation histories",
+    "use": "expanded audited phrase-level natural-language revision lineage corpus"
+  },
+  {
+    "name": "git-doc audited phrase lineage four-repo probe",
+    "path": "data/generated/git_doc_phrase_audited_history_four_repo_probe40.jsonl",
+    "records": 40,
+    "source_repo": "external/git_history/express + external/git_history/axios + external/git_history/requests + external/git_history/flask",
+    "source": "https://github.com/expressjs/express + https://github.com/axios/axios + https://github.com/psf/requests + https://github.com/pallets/flask",
+    "source_fact": "10 audited doc-phrase rows per repo, round-robin balanced",
+    "use": "balanced four-repo audited KV probe slice"
+  },
+  {
+    "name": "express git-doc option lineage",
+    "path": "data/generated/git_doc_option_history_express_lineage.jsonl",
+    "records": 54,
+    "source_repo": "external/git_history/express",
+    "source": "https://github.com/expressjs/express",
+    "source_fact": "two-option labels derived from doc-phrase lineage rows",
+    "use": "option-label currentness control for natural-language revision lineage"
+  },
+  {
+    "name": "axios git-doc option lineage",
+    "path": "data/generated/git_doc_option_history_axios_lineage.jsonl",
+    "records": 40,
+    "source_repo": "external/git_history/axios",
+    "source": "https://github.com/axios/axios",
+    "source_fact": "two-option labels derived from doc-phrase lineage rows",
+    "use": "option-label currentness control for natural-language revision lineage"
+  },
+  {
+    "name": "git-doc option lineage two-repo probe",
+    "path": "data/generated/git_doc_option_history_two_repo_probe20.jsonl",
+    "records": 20,
+    "source_repo": "external/git_history/express + external/git_history/axios",
+    "source": "https://github.com/expressjs/express + https://github.com/axios/axios",
+    "source_fact": "single deterministic option assignment from the 20-row doc-phrase probe",
+    "use": "small option-label currentness probe; exposed label-prior confounding"
+  },
+  {
+    "name": "express git-doc balanced option lineage",
+    "path": "data/generated/git_doc_option_balanced_history_express_lineage.jsonl",
+    "records": 108,
+    "source_repo": "external/git_history/express",
+    "source": "https://github.com/expressjs/express",
+    "source_fact": "both ALPHA-current and BRAVO-current assignments for each doc-phrase row",
+    "use": "label-balanced option currentness control"
+  },
+  {
+    "name": "axios git-doc balanced option lineage",
+    "path": "data/generated/git_doc_option_balanced_history_axios_lineage.jsonl",
+    "records": 80,
+    "source_repo": "external/git_history/axios",
+    "source": "https://github.com/axios/axios",
+    "source_fact": "both ALPHA-current and BRAVO-current assignments for each doc-phrase row",
+    "use": "label-balanced option currentness control"
+  },
+  {
+    "name": "git-doc balanced option lineage two-repo probe",
+    "path": "data/generated/git_doc_option_balanced_history_two_repo_probe40.jsonl",
+    "records": 40,
+    "source_repo": "external/git_history/express + external/git_history/axios",
+    "source": "https://github.com/expressjs/express + https://github.com/axios/axios",
+    "source_fact": "both option assignments for the 20-row doc-phrase probe",
+    "use": "balanced option-label currentness KV probe"
+  },
+  {
+    "name": "express git-doc evidence-choice lineage",
+    "path": "data/generated/git_doc_evidence_choice_history_express_lineage.jsonl",
+    "records": 54,
+    "source_repo": "external/git_history/express",
+    "source": "https://github.com/expressjs/express",
+    "source_fact": "current block-id target derived from doc-phrase lineage rows",
+    "use": "current-block evidence routing control"
+  },
+  {
+    "name": "axios git-doc evidence-choice lineage",
+    "path": "data/generated/git_doc_evidence_choice_history_axios_lineage.jsonl",
+    "records": 40,
+    "source_repo": "external/git_history/axios",
+    "source": "https://github.com/axios/axios",
+    "source_fact": "current block-id target derived from doc-phrase lineage rows",
+    "use": "current-block evidence routing control"
+  },
+  {
+    "name": "git-doc evidence-choice lineage two-repo probe",
+    "path": "data/generated/git_doc_evidence_choice_history_two_repo_probe20.jsonl",
+    "records": 20,
+    "source_repo": "external/git_history/express + external/git_history/axios",
+    "source": "https://github.com/expressjs/express + https://github.com/axios/axios",
+    "source_fact": "current block-id target for the 20-row doc-phrase probe",
+    "use": "small current-block evidence-routing KV probe"
+  },
+  {
+    "name": "git-doc yes/no currentness four-repo audited probe",
+    "path": "data/generated/git_doc_yesno_audited_history_four_repo_probe80.jsonl",
+    "records": 80,
+    "source_repo": "external/git_history/express + external/git_history/axios + external/git_history/requests + external/git_history/flask",
+    "source": "https://github.com/expressjs/express + https://github.com/axios/axios + https://github.com/psf/requests + https://github.com/pallets/flask",
+    "source_fact": "YES/NO currentness checks generated from balanced four-repo audited doc-phrase probe",
+    "use": "non-copying yes/no currentness control for audited natural-language revision lineage"
+  },
+  {
+    "name": "git-doc phrase-choice four-repo audited probe",
+    "path": "data/generated/git_doc_phrase_choice_audited_history_four_repo_probe80.jsonl",
+    "records": 80,
+    "source_repo": "external/git_history/express + external/git_history/axios + external/git_history/requests + external/git_history/flask",
+    "source": "https://github.com/expressjs/express + https://github.com/axios/axios + https://github.com/psf/requests + https://github.com/pallets/flask",
+    "source_fact": "current/stale candidate phrases generated from balanced four-repo audited doc-phrase probe",
+    "use": "candidate-phrase currentness control; useful as a suffix-reintroduction negative control"
+  },
+  {
+    "name": "git-doc nonce-option four-repo audited probe",
+    "path": "data/generated/git_doc_nonce_option_audited_history_four_repo_probe80.jsonl",
+    "records": 80,
+    "source_repo": "external/git_history/express + external/git_history/axios + external/git_history/requests + external/git_history/flask",
+    "source": "https://github.com/expressjs/express + https://github.com/axios/axios + https://github.com/psf/requests + https://github.com/pallets/flask",
+    "source_fact": "nonce-coded currentness options generated from balanced four-repo audited doc-phrase probe",
+    "use": "discriminative currentness control without fixed ALPHA/BRAVO or YES/NO label priors"
+  },
+  {
+    "name": "agent-memory update nonce-option probe",
+    "path": "data/generated/agent_memory_update_nonce_option_probe80.jsonl",
+    "records": 80,
+    "source": "hand-authored realistic agent-memory update scenarios",
+    "source_fact": "20 stale/current assistant-memory slots balanced across order and nonce-code assignment",
+    "use": "realistic stale assistant-memory currentness control for KV cache repair"
+  },
+  {
+    "name": "agent-memory action probe",
+    "path": "data/generated/agent_memory_action_probe64.jsonl",
+    "records": 64,
+    "source": "hand-authored realistic agent-memory action scenarios",
+    "source_fact": "16 stale/current assistant-memory slots balanced across order and direct/task query style, with two distractor memories per item",
+    "use": "locked dev/test action-oriented stale assistant-memory benchmark for KV cache repair"
+  },
+  {
+    "name": "agent-memory action dev split",
+    "path": "data/generated/agent_memory_action_dev32.jsonl",
+    "records": 32,
+    "source": "hand-authored realistic agent-memory action scenarios",
+    "source_fact": "8 dev memory keys crossed with order and query style",
+    "use": "policy-selection split for action-oriented stale assistant-memory KV cache repair"
+  },
+  {
+    "name": "agent-memory action test split",
+    "path": "data/generated/agent_memory_action_test32.jsonl",
+    "records": 32,
+    "source": "hand-authored realistic agent-memory action scenarios",
+    "source_fact": "8 held-out memory keys crossed with order and query style",
+    "use": "held-out evaluation split for action-oriented stale assistant-memory KV cache repair"
+  },
+  {
+    "name": "agent-memory messy multi-update probe",
+    "path": "data/generated/agent_memory_messy_probe40.jsonl",
+    "records": 40,
+    "source": "hand-authored noisy assistant-memory action scenarios",
+    "source_fact": "10 memory keys with older/middle/current updates, varied memory-key wording, order variants, query styles, and distractor memories",
+    "use": "less-templated multi-update stale assistant-memory targeting benchmark"
+  },
+  {
+    "name": "agent-memory messy multi-update dev split",
+    "path": "data/generated/agent_memory_messy_dev20.jsonl",
+    "records": 20,
+    "source": "hand-authored noisy assistant-memory action scenarios",
+    "source_fact": "5 dev memory keys with older/middle/current updates crossed with order and query style",
+    "use": "policy-development split for less-templated multi-update assistant-memory repair"
+  },
+  {
+    "name": "agent-memory messy multi-update test split",
+    "path": "data/generated/agent_memory_messy_test20.jsonl",
+    "records": 20,
+    "source": "hand-authored noisy assistant-memory action scenarios",
+    "source_fact": "5 held-out memory keys with older/middle/current updates crossed with order and query style",
+    "use": "held-out less-templated multi-update assistant-memory targeting and model-currentness benchmark"
+  },
+  {
+    "name": "agent-memory long-context test8",
+    "path": "data/generated/agent_memory_long_context_test8.jsonl",
+    "records": 8,
+    "source": "inflated from agent-memory action test split",
+    "source_fact": "8 held-out action-memory cases with 96 unrelated memory distractors per item and intact stale/current target lineage",
+    "use": "long persistent-cache latency benchmark for prompt-deletion versus KV repair"
+  },
+  {
+    "name": "agent-memory long-context d48-s4 test4",
+    "path": "data/generated/agent_memory_long_context_test4_d48_s4.jsonl",
+    "records": 4,
+    "source": "inflated from agent-memory action test split",
+    "source_fact": "4 held-out action-memory cases with 48 unrelated memory distractors per item and intact stale/current target lineage",
+    "use": "feasible long-context smoke benchmark for persistent-cache latency on local CPU"
+  },
+  {
+    "name": "agent-memory long-context d48-s4 test8",
+    "path": "data/generated/agent_memory_long_context_test8_d48_s4.jsonl",
+    "records": 8,
+    "source": "inflated from agent-memory action test split",
+    "source_fact": "8 held-out action-memory cases with 48 unrelated memory distractors per item and intact stale/current target lineage",
+    "use": "expanded feasible long-context persistent-cache latency benchmark on local CPU"
+  },
+  {
+    "name": "agent-memory long-context d48-s4 test32",
+    "path": "data/generated/agent_memory_long_context_test32_d48_s4.jsonl",
+    "records": 32,
+    "source": "inflated from agent-memory action test split",
+    "source_fact": "full 32-row held-out action-memory test split with 48 unrelated memory distractors per item and intact stale/current target lineage",
+    "use": "full held-out long-context persistent-cache benchmark for 7B MLX field-impact validation"
+  },
+  {
+    "name": "memory-store lineage demo",
+    "path": "data/generated/memory_store_lineage_demo.jsonl",
+    "records": 1,
+    "source": "SQLite memory ledger demo",
+    "source_fact": "one superseded/current weekly-review memory update with unrelated current memories and a ledger-generated cache edit plan",
+    "use": "real memory-store lineage prototype for cache repair planning and provenance repair"
+  },
+  {
+    "name": "agent-memory long-context d230-s4 test4",
+    "path": "data/generated/agent_memory_long_context_test4_d230_s4.jsonl",
+    "records": 4,
+    "source": "inflated from agent-memory action test split",
+    "source_fact": "4 held-out action-memory cases with 230 unrelated memory distractors per item, about 31.3k total tokens per case",
+    "use": "32k-class persistent-cache latency validation for 7B MLX field-impact evidence"
+  },
+  {
+    "name": "agent-memory exact-32k d236-s4 test2",
+    "path": "data/generated/agent_memory_long_context_test2_d236_s4.jsonl",
+    "records": 2,
+    "source": "inflated from agent-memory action test split",
+    "source_fact": "2 held-out action-memory cases with 236 unrelated memory distractors per item, about 32.1k total tokens per case",
+    "use": "exact-32k persistent-cache latency validation for 7B MLX field-impact evidence"
+  },
+  {
+    "name": "stale-memory repair public benchmark v1",
+    "path": "data/public/stale_memory_repair_benchmark_v1.jsonl",
+    "records": 184,
+    "source": "combined public release from agent-memory update, action, and messy multi-update suites",
+    "source_fact": "80 update_nonce_option cases, 64 action cases, and 40 messy_multi_update cases with 224 total stale memory records",
+    "use": "public stale-memory KV-cache repair benchmark and targeting-audit release"
+  },
+  {
+    "name": "stale-memory universality traces v1",
+    "path": "data/public/stale_memory_universality_traces_v1.jsonl",
+    "records": 264,
+    "source": "combined public release benchmark plus public Git-history document-revision traces",
+    "source_fact": "184 assistant-memory rows plus 80 public Git-history rows from express, axios, flask, and requests; 304 total stale memory/revision records",
+    "use": "mixed generated plus less-generated public trace benchmark for stale-memory universality checks"
+  }
+]
