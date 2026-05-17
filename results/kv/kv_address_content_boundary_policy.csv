@@ -1,0 +1,8 @@
+model,band,edit,span,policy,cases,accuracy,evidence_accuracy,stale_usage_rate,clean_accuracy,vs_full_accuracy_delta,vs_full_accuracy_ci_low,vs_full_accuracy_ci_high,vs_full_evidence_accuracy_delta,vs_full_evidence_accuracy_ci_low,vs_full_evidence_accuracy_ci_high,vs_full_used_stale_fact_delta,vs_full_used_stale_fact_ci_low,vs_full_used_stale_fact_ci_high,vs_full_clean_accuracy_delta,vs_full_clean_accuracy_ci_low,vs_full_clean_accuracy_ci_high
+SmolLM2-360M,0-31,baseline,full_context,full_cache,80,0.275,0.05,0.45,0.1875,,,,,,,,,,,,
+SmolLM2-360M,0-31,values,full_block,zero_lineage_conflict_values_layers_0_31,80,0.35,0.0,0.325,0.3375,0.075,0.0,0.1625,-0.05,-0.1,-0.0125,-0.125,-0.225,-0.025,0.15,0.075,0.2375
+SmolLM2-360M,0-31,keys_values,full_block,zero_lineage_conflict_keys_values_layers_0_31,80,0.25,0.125,0.2125,0.2,-0.025,-0.15,0.1,0.075,-0.0125,0.1625,-0.2375,-0.375,-0.1,0.0125,-0.1,0.125
+SmolLM2-360M,0-31,values,header,zero_lineage_conflict_values_layers_0_31_span_header,80,0.2875,0.0,0.325,0.25,0.0125,-0.05,0.075,-0.05,-0.1,-0.0125,-0.125,-0.225,-0.0375,0.0625,0.0,0.125
+SmolLM2-360M,0-31,keys_values,header,zero_lineage_conflict_keys_values_layers_0_31_span_header,80,0.25,0.0875,0.3,0.1875,-0.025,-0.15,0.1,0.0375,-0.0375,0.125,-0.15,-0.275,-0.025,0.0,-0.1125,0.1125
+SmolLM2-360M,0-31,values,body,zero_lineage_conflict_values_layers_0_31_span_body,80,0.3125,0.0125,0.425,0.25,0.0375,-0.025,0.1,-0.0375,-0.0875,0.0,-0.025,-0.1125,0.0625,0.0625,0.0,0.125
+SmolLM2-360M,0-31,keys_values,body,zero_lineage_conflict_keys_values_layers_0_31_span_body,80,0.3375,0.025,0.4125,0.2875,0.0625,-0.025,0.15,-0.025,-0.0875,0.0375,-0.0375,-0.15,0.075,0.1,0.025,0.1875
