@@ -1,0 +1,2 @@
+baseline,comparator,cases,avg_prompt_deletion_update_ms,avg_cache_repair_update_ms,avg_prefill_saved_ms,speedup_ratio,accuracy_delta,evidence_delta,stale_usage_delta
+drop_stale_prompt,zero_text_timestamp_conflict_values_layers_8_23_boost_current_factor_1_0,4,85253.8171246415,2247.3668856546283,81929.31738484185,37.934979672804154,0.0,0.0,0.0

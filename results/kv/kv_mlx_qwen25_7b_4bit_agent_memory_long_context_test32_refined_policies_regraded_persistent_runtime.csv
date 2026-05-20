@@ -1,0 +1,3 @@
+baseline,comparator,cases,avg_prompt_deletion_update_ms,avg_cache_repair_update_ms,avg_prefill_saved_ms,speedup_ratio,accuracy_delta,evidence_delta,stale_usage_delta
+drop_stale_prompt,zero_text_timestamp_conflict_values_layers_8_23_boost_current_factor_1_0,32,19379.968193927198,1262.2734582109842,18076.33278123103,15.353224824511765,0.0,0.03125,0.03125
+drop_stale_prompt,zero_text_timestamp_conflict_values_layers_8_23_boost_current_factor_1_2,32,19379.968193927198,1362.4784595740493,18078.921333217295,14.224054742110157,0.0,0.03125,0.03125

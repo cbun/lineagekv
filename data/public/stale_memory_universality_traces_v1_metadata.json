@@ -1,0 +1,18 @@
+{
+  "description": "Mixed stale/current trace benchmark for universality checks. It combines the public assistant-memory release with less-generated public Git-history document-revision traces.",
+  "license_note": "Assistant-memory rows are generated in this repository. Git-history rows are derived from public repository histories already present under external/git_history.",
+  "name": "stale_memory_universality_traces_v1",
+  "records": 264,
+  "source_descriptions": {
+    "assistant_memory_public_v1": "generated assistant-memory stale/current traces",
+    "public_git_history_doc_nonce": "real public Git history document revisions from express, axios, flask, and requests"
+  },
+  "source_paths": {
+    "assistant_memory_public_v1": "data/public/stale_memory_repair_benchmark_v1.jsonl",
+    "public_git_history_doc_nonce": "data/generated/git_doc_nonce_option_audited_history_four_repo_probe80.jsonl"
+  },
+  "sources": {
+    "assistant_memory_public_v1": 184,
+    "public_git_history_doc_nonce": 80
+  }
+}

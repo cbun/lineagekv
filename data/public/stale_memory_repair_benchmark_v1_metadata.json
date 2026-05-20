@@ -1,0 +1,16 @@
+{
+  "description": "Composite stale/current assistant-memory benchmark for cache-repair research. Rows preserve gold current evidence IDs, stale IDs, distractor IDs, timestamps, and memory metadata needed for lineage and text+timestamp currentness audits.",
+  "license_note": "Generated benchmark data authored inside this repository; no private user data.",
+  "name": "stale_memory_repair_benchmark_v1",
+  "records": 184,
+  "source_paths": {
+    "action": "data/generated/agent_memory_action_probe64.jsonl",
+    "messy_multi_update": "data/generated/agent_memory_messy_probe40.jsonl",
+    "update_nonce_option": "data/generated/agent_memory_update_nonce_option_probe80.jsonl"
+  },
+  "sources": {
+    "action": 64,
+    "messy_multi_update": 40,
+    "update_nonce_option": 80
+  }
+}

@@ -1,0 +1,4 @@
+label,approx_total_tokens,cases,prompt_deletion_update_ms,cache_repair_update_ms,speedup_ratio,prefill_saved_ms,source_csv
+6.7k d48/s4 32-case,6790,32,19379.968193927198,1262.2734582109842,15.353224824511765,18076.33278123103,results/kv/kv_mlx_qwen25_7b_4bit_agent_memory_long_context_test32_refined_policies_regraded_persistent_runtime.csv
+31k d230/s4 4-case,31300,4,85253.8171246415,2247.3668856546283,37.934979672804154,81929.31738484185,results/kv/kv_mlx_qwen25_7b_4bit_agent_memory_long_context_test4_d230_s4_persistent_runtime.csv
+32k d236/s4 2-case,32115,2,119077.04339572228,3096.5118748135865,38.45521935965153,113681.68156314641,results/kv/kv_mlx_qwen25_7b_4bit_agent_memory_long_context_test2_d236_s4_persistent_runtime.csv

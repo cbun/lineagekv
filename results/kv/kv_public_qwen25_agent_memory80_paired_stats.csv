@@ -1,0 +1,13 @@
+scope,baseline,comparator,metric,cases,baseline_mean,comparator_mean,delta,ci_low,ci_high,wins,losses,ties
+all,full_cache,drop_stale_prompt,correct,80,0.4625,0.45,-0.0125,-0.1,0.075,6,7,67
+all,full_cache,drop_stale_prompt,evidence_correct,80,0.4375,1.0,0.5625,0.45,0.6625,45,0,35
+all,full_cache,drop_stale_prompt,used_stale_fact,80,0.7375,0.4,-0.3375,-0.45,-0.225,2,29,49
+all,full_cache,zero_text_timestamp_conflict_values_layers_8_23_span_decile_1,correct,80,0.4625,0.475,0.0125,0.0,0.0375,1,0,79
+all,full_cache,zero_text_timestamp_conflict_values_layers_8_23_span_decile_1,evidence_correct,80,0.4375,1.0,0.5625,0.45,0.6625,45,0,35
+all,full_cache,zero_text_timestamp_conflict_values_layers_8_23_span_decile_1,used_stale_fact,80,0.7375,0.375,-0.3625,-0.475,-0.2625,0,29,51
+domain:agent_memory,full_cache,drop_stale_prompt,correct,80,0.4625,0.45,-0.0125,-0.1,0.075,6,7,67
+domain:agent_memory,full_cache,drop_stale_prompt,evidence_correct,80,0.4375,1.0,0.5625,0.45,0.6625,45,0,35
+domain:agent_memory,full_cache,drop_stale_prompt,used_stale_fact,80,0.7375,0.4,-0.3375,-0.45,-0.225,2,29,49
+domain:agent_memory,full_cache,zero_text_timestamp_conflict_values_layers_8_23_span_decile_1,correct,80,0.4625,0.475,0.0125,0.0,0.0375,1,0,79
+domain:agent_memory,full_cache,zero_text_timestamp_conflict_values_layers_8_23_span_decile_1,evidence_correct,80,0.4375,1.0,0.5625,0.45,0.6625,45,0,35
+domain:agent_memory,full_cache,zero_text_timestamp_conflict_values_layers_8_23_span_decile_1,used_stale_fact,80,0.7375,0.375,-0.3625,-0.475,-0.2625,0,29,51

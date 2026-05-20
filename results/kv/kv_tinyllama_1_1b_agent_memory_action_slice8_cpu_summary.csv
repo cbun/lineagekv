@@ -1,0 +1,13 @@
+scope,policy,cases,accuracy,evidence_accuracy,stale_usage_rate,avg_prefix_tokens,avg_latency_ms
+all_rows,drop_stale_prompt,8,0.625,1.0,0.0,239.5,16170.62131286366
+all_rows,full_cache,8,0.625,0.125,0.875,312.0,16314.48277598247
+all_rows,zero_text_timestamp_conflict_values_layers_6_21_boost_current_factor_1_5,8,0.75,0.75,0.25,312.0,16256.89356791554
+domain:agent_memory_action,drop_stale_prompt,8,0.625,1.0,0.0,239.5,16170.62131286366
+domain:agent_memory_action,full_cache,8,0.625,0.125,0.875,312.0,16314.48277598247
+domain:agent_memory_action,zero_text_timestamp_conflict_values_layers_6_21_boost_current_factor_1_5,8,0.75,0.75,0.25,312.0,16256.89356791554
+paired:full_cache+drop_stale_prompt+zero_text_timestamp_conflict_values_layers_6_21_boost_current_factor_1_5,drop_stale_prompt,8,0.625,1.0,0.0,239.5,16170.62131286366
+paired:full_cache+drop_stale_prompt+zero_text_timestamp_conflict_values_layers_6_21_boost_current_factor_1_5,full_cache,8,0.625,0.125,0.875,312.0,16314.48277598247
+paired:full_cache+drop_stale_prompt+zero_text_timestamp_conflict_values_layers_6_21_boost_current_factor_1_5,zero_text_timestamp_conflict_values_layers_6_21_boost_current_factor_1_5,8,0.75,0.75,0.25,312.0,16256.89356791554
+paired_domain:agent_memory_action,drop_stale_prompt,8,0.625,1.0,0.0,239.5,16170.62131286366
+paired_domain:agent_memory_action,full_cache,8,0.625,0.125,0.875,312.0,16314.48277598247
+paired_domain:agent_memory_action,zero_text_timestamp_conflict_values_layers_6_21_boost_current_factor_1_5,8,0.75,0.75,0.25,312.0,16256.89356791554
