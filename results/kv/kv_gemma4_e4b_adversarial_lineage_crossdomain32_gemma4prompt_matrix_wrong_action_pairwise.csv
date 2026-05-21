@@ -1,0 +1,5 @@
+baseline,comparator,paired_cases,baseline_wrong_actions,prevented_wrong_actions,still_wrong_actions,introduced_wrong_actions,wrong_action_prevention_rate,introduced_wrong_action_rate,rescued_correct_answers
+full_cache,drop_stale_prompt,32,9,9,0,0,1.0,0.0,6
+full_cache,zero_lineage_conflict_values_layers_8_23,32,9,8,1,0,0.8888888888888888,0.0,6
+full_cache,zero_lineage_conflict_keys_layers_8_23,32,9,7,2,0,0.7777777777777778,0.0,6
+full_cache,zero_lineage_conflict_keys_values_layers_8_23,32,9,7,2,0,0.7777777777777778,0.0,6

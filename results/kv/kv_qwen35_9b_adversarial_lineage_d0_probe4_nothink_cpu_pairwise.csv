@@ -1,0 +1,13 @@
+scope,baseline,comparator,metric,cases,baseline_mean,comparator_mean,delta,ci_low,ci_high,wins,losses,ties
+all,full_cache,drop_stale_prompt,correct,4,0.25,1.0,0.75,0.25,1.0,3,0,1
+all,full_cache,drop_stale_prompt,evidence_correct,4,0.0,0.75,0.75,0.25,1.0,3,0,1
+all,full_cache,drop_stale_prompt,used_stale_fact,4,0.75,0.0,-0.75,-1.0,-0.25,0,3,1
+all,full_cache,zero_lineage_conflict_values_layers_8_23,correct,4,0.25,1.0,0.75,0.25,1.0,3,0,1
+all,full_cache,zero_lineage_conflict_values_layers_8_23,evidence_correct,4,0.0,0.75,0.75,0.25,1.0,3,0,1
+all,full_cache,zero_lineage_conflict_values_layers_8_23,used_stale_fact,4,0.75,0.0,-0.75,-1.0,-0.25,0,3,1
+domain:user_preference,full_cache,drop_stale_prompt,correct,4,0.25,1.0,0.75,0.25,1.0,3,0,1
+domain:user_preference,full_cache,drop_stale_prompt,evidence_correct,4,0.0,0.75,0.75,0.25,1.0,3,0,1
+domain:user_preference,full_cache,drop_stale_prompt,used_stale_fact,4,0.75,0.0,-0.75,-1.0,-0.25,0,3,1
+domain:user_preference,full_cache,zero_lineage_conflict_values_layers_8_23,correct,4,0.25,1.0,0.75,0.25,1.0,3,0,1
+domain:user_preference,full_cache,zero_lineage_conflict_values_layers_8_23,evidence_correct,4,0.0,0.75,0.75,0.25,1.0,3,0,1
+domain:user_preference,full_cache,zero_lineage_conflict_values_layers_8_23,used_stale_fact,4,0.75,0.0,-0.75,-1.0,-0.25,0,3,1

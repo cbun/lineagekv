@@ -1,0 +1,4 @@
+policy,cases,action_success_rate,wrong_action_rate,accuracy,stale_use_rate,evidence_accuracy
+drop_stale_prompt,4,1.0,0.0,1.0,0.0,0.75
+full_cache,4,0.25,0.75,0.25,0.75,0.0
+zero_lineage_conflict_values_layers_8_23,4,1.0,0.0,1.0,0.0,0.75

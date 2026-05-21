@@ -1,0 +1,3 @@
+baseline,comparator,paired_cases,baseline_wrong_actions,prevented_wrong_actions,still_wrong_actions,introduced_wrong_actions,wrong_action_prevention_rate,introduced_wrong_action_rate,rescued_correct_answers
+full_cache,drop_stale_prompt,4,3,3,0,0,1.0,0.0,3
+full_cache,zero_lineage_conflict_values_layers_8_23,4,3,3,0,0,1.0,0.0,3

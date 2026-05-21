@@ -1,0 +1,162 @@
+{
+  "model": "Qwen/Qwen3.5-9B",
+  "config_model_type": "qwen3_5",
+  "text_model_type": "qwen3_5_text",
+  "load_ms": 2818.630708847195,
+  "prefill_ms": 27762.59220764041,
+  "prefix_tokens": 274,
+  "suffix_tokens": 82,
+  "cache_class": "DynamicCache",
+  "cache_layers": 32,
+  "editable_layer_count": 8,
+  "editable_layers": [
+    {
+      "idx": 3,
+      "class": "DynamicLayer",
+      "keys": [
+        1,
+        4,
+        274,
+        256
+      ],
+      "values": [
+        1,
+        4,
+        274,
+        256
+      ]
+    },
+    {
+      "idx": 7,
+      "class": "DynamicLayer",
+      "keys": [
+        1,
+        4,
+        274,
+        256
+      ],
+      "values": [
+        1,
+        4,
+        274,
+        256
+      ]
+    },
+    {
+      "idx": 11,
+      "class": "DynamicLayer",
+      "keys": [
+        1,
+        4,
+        274,
+        256
+      ],
+      "values": [
+        1,
+        4,
+        274,
+        256
+      ]
+    },
+    {
+      "idx": 15,
+      "class": "DynamicLayer",
+      "keys": [
+        1,
+        4,
+        274,
+        256
+      ],
+      "values": [
+        1,
+        4,
+        274,
+        256
+      ]
+    },
+    {
+      "idx": 19,
+      "class": "DynamicLayer",
+      "keys": [
+        1,
+        4,
+        274,
+        256
+      ],
+      "values": [
+        1,
+        4,
+        274,
+        256
+      ]
+    },
+    {
+      "idx": 23,
+      "class": "DynamicLayer",
+      "keys": [
+        1,
+        4,
+        274,
+        256
+      ],
+      "values": [
+        1,
+        4,
+        274,
+        256
+      ]
+    },
+    {
+      "idx": 27,
+      "class": "DynamicLayer",
+      "keys": [
+        1,
+        4,
+        274,
+        256
+      ],
+      "values": [
+        1,
+        4,
+        274,
+        256
+      ]
+    },
+    {
+      "idx": 31,
+      "class": "DynamicLayer",
+      "keys": [
+        1,
+        4,
+        274,
+        256
+      ],
+      "values": [
+        1,
+        4,
+        274,
+        256
+      ]
+    }
+  ],
+  "policy_results": [
+    {
+      "policy": "zero_text_timestamp_conflict_values_layers_8_23",
+      "ok": true,
+      "clone_ms": 9.10687493160367,
+      "edit_ms": 1.2667500413954258
+    },
+    {
+      "policy": "zero_text_timestamp_conflict_keys_values_layers_8_23",
+      "ok": true,
+      "clone_ms": 8.562542032450438,
+      "edit_ms": 0.2859998494386673
+    },
+    {
+      "policy": "zero_text_timestamp_conflict_values_layers_8_23_boost_current_factor_1_0",
+      "ok": true,
+      "clone_ms": 5.609374959021807,
+      "edit_ms": 0.7798746228218079
+    }
+  ]
+}

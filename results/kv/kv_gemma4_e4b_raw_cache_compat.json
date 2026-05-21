@@ -1,0 +1,418 @@
+{
+  "model": "google/gemma-4-E4B-it",
+  "config_model_type": "gemma4",
+  "text_model_type": "gemma4_text",
+  "load_ms": 3174.8118326067924,
+  "prefill_ms": 23604.413124732673,
+  "prefix_tokens": 296,
+  "suffix_tokens": 88,
+  "cache_class": "DynamicCache",
+  "cache_layers": 24,
+  "editable_layer_count": 24,
+  "editable_layers": [
+    {
+      "idx": 0,
+      "class": "DynamicSlidingWindowLayer",
+      "keys": [
+        1,
+        2,
+        296,
+        256
+      ],
+      "values": [
+        1,
+        2,
+        296,
+        256
+      ]
+    },
+    {
+      "idx": 1,
+      "class": "DynamicSlidingWindowLayer",
+      "keys": [
+        1,
+        2,
+        296,
+        256
+      ],
+      "values": [
+        1,
+        2,
+        296,
+        256
+      ]
+    },
+    {
+      "idx": 2,
+      "class": "DynamicSlidingWindowLayer",
+      "keys": [
+        1,
+        2,
+        296,
+        256
+      ],
+      "values": [
+        1,
+        2,
+        296,
+        256
+      ]
+    },
+    {
+      "idx": 3,
+      "class": "DynamicSlidingWindowLayer",
+      "keys": [
+        1,
+        2,
+        296,
+        256
+      ],
+      "values": [
+        1,
+        2,
+        296,
+        256
+      ]
+    },
+    {
+      "idx": 4,
+      "class": "DynamicSlidingWindowLayer",
+      "keys": [
+        1,
+        2,
+        296,
+        256
+      ],
+      "values": [
+        1,
+        2,
+        296,
+        256
+      ]
+    },
+    {
+      "idx": 5,
+      "class": "DynamicLayer",
+      "keys": [
+        1,
+        2,
+        296,
+        512
+      ],
+      "values": [
+        1,
+        2,
+        296,
+        512
+      ]
+    },
+    {
+      "idx": 6,
+      "class": "DynamicSlidingWindowLayer",
+      "keys": [
+        1,
+        2,
+        296,
+        256
+      ],
+      "values": [
+        1,
+        2,
+        296,
+        256
+      ]
+    },
+    {
+      "idx": 7,
+      "class": "DynamicSlidingWindowLayer",
+      "keys": [
+        1,
+        2,
+        296,
+        256
+      ],
+      "values": [
+        1,
+        2,
+        296,
+        256
+      ]
+    },
+    {
+      "idx": 8,
+      "class": "DynamicSlidingWindowLayer",
+      "keys": [
+        1,
+        2,
+        296,
+        256
+      ],
+      "values": [
+        1,
+        2,
+        296,
+        256
+      ]
+    },
+    {
+      "idx": 9,
+      "class": "DynamicSlidingWindowLayer",
+      "keys": [
+        1,
+        2,
+        296,
+        256
+      ],
+      "values": [
+        1,
+        2,
+        296,
+        256
+      ]
+    },
+    {
+      "idx": 10,
+      "class": "DynamicSlidingWindowLayer",
+      "keys": [
+        1,
+        2,
+        296,
+        256
+      ],
+      "values": [
+        1,
+        2,
+        296,
+        256
+      ]
+    },
+    {
+      "idx": 11,
+      "class": "DynamicLayer",
+      "keys": [
+        1,
+        2,
+        296,
+        512
+      ],
+      "values": [
+        1,
+        2,
+        296,
+        512
+      ]
+    },
+    {
+      "idx": 12,
+      "class": "DynamicSlidingWindowLayer",
+      "keys": [
+        1,
+        2,
+        296,
+        256
+      ],
+      "values": [
+        1,
+        2,
+        296,
+        256
+      ]
+    },
+    {
+      "idx": 13,
+      "class": "DynamicSlidingWindowLayer",
+      "keys": [
+        1,
+        2,
+        296,
+        256
+      ],
+      "values": [
+        1,
+        2,
+        296,
+        256
+      ]
+    },
+    {
+      "idx": 14,
+      "class": "DynamicSlidingWindowLayer",
+      "keys": [
+        1,
+        2,
+        296,
+        256
+      ],
+      "values": [
+        1,
+        2,
+        296,
+        256
+      ]
+    },
+    {
+      "idx": 15,
+      "class": "DynamicSlidingWindowLayer",
+      "keys": [
+        1,
+        2,
+        296,
+        256
+      ],
+      "values": [
+        1,
+        2,
+        296,
+        256
+      ]
+    },
+    {
+      "idx": 16,
+      "class": "DynamicSlidingWindowLayer",
+      "keys": [
+        1,
+        2,
+        296,
+        256
+      ],
+      "values": [
+        1,
+        2,
+        296,
+        256
+      ]
+    },
+    {
+      "idx": 17,
+      "class": "DynamicLayer",
+      "keys": [
+        1,
+        2,
+        296,
+        512
+      ],
+      "values": [
+        1,
+        2,
+        296,
+        512
+      ]
+    },
+    {
+      "idx": 18,
+      "class": "DynamicSlidingWindowLayer",
+      "keys": [
+        1,
+        2,
+        296,
+        256
+      ],
+      "values": [
+        1,
+        2,
+        296,
+        256
+      ]
+    },
+    {
+      "idx": 19,
+      "class": "DynamicSlidingWindowLayer",
+      "keys": [
+        1,
+        2,
+        296,
+        256
+      ],
+      "values": [
+        1,
+        2,
+        296,
+        256
+      ]
+    },
+    {
+      "idx": 20,
+      "class": "DynamicSlidingWindowLayer",
+      "keys": [
+        1,
+        2,
+        296,
+        256
+      ],
+      "values": [
+        1,
+        2,
+        296,
+        256
+      ]
+    },
+    {
+      "idx": 21,
+      "class": "DynamicSlidingWindowLayer",
+      "keys": [
+        1,
+        2,
+        296,
+        256
+      ],
+      "values": [
+        1,
+        2,
+        296,
+        256
+      ]
+    },
+    {
+      "idx": 22,
+      "class": "DynamicSlidingWindowLayer",
+      "keys": [
+        1,
+        2,
+        296,
+        256
+      ],
+      "values": [
+        1,
+        2,
+        296,
+        256
+      ]
+    },
+    {
+      "idx": 23,
+      "class": "DynamicLayer",
+      "keys": [
+        1,
+        2,
+        296,
+        512
+      ],
+      "values": [
+        1,
+        2,
+        296,
+        512
+      ]
+    }
+  ],
+  "policy_results": [
+    {
+      "policy": "zero_text_timestamp_conflict_values_layers_8_23",
+      "ok": true,
+      "clone_ms": 51.30229191854596,
+      "edit_ms": 4.238374996930361
+    },
+    {
+      "policy": "zero_text_timestamp_conflict_keys_values_layers_8_23",
+      "ok": true,
+      "clone_ms": 7.5892917811870575,
+      "edit_ms": 1.1637909337878227
+    },
+    {
+      "policy": "zero_text_timestamp_conflict_values_layers_8_23_boost_current_factor_1_0",
+      "ok": true,
+      "clone_ms": 4.98199975118041,
+      "edit_ms": 1.566875260323286
+    }
+  ]
+}

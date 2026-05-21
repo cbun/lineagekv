@@ -1,0 +1,6 @@
+policy,cases,accuracy,original_evidence_accuracy,original_joint_accuracy,repaired_evidence_accuracy,repaired_joint_accuracy,detector_coverage,stale_usage_rate
+drop_stale_prompt,32,1.0,1.0,1.0,1.0,1.0,1.0,0.0
+full_cache,32,0.8125,0.65625,0.65625,1.0,0.8125,1.0,0.28125
+zero_lineage_conflict_keys_layers_8_23,32,1.0,0.9375,0.9375,1.0,1.0,1.0,0.0625
+zero_lineage_conflict_keys_values_layers_8_23,32,1.0,0.9375,0.9375,1.0,1.0,1.0,0.0625
+zero_lineage_conflict_values_layers_8_23,32,1.0,0.9375,0.9375,1.0,1.0,1.0,0.03125

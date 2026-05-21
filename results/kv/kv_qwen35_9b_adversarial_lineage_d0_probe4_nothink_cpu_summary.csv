@@ -1,0 +1,13 @@
+scope,policy,cases,accuracy,evidence_accuracy,stale_usage_rate,avg_prefix_tokens,avg_latency_ms
+all_rows,drop_stale_prompt,4,1.0,0.75,0.0,115.5,81315.08514576126
+all_rows,full_cache,4,0.25,0.0,0.75,204.5,83423.85002074298
+all_rows,zero_lineage_conflict_values_layers_8_23,4,1.0,0.75,0.0,204.5,73294.60512509104
+domain:user_preference,drop_stale_prompt,4,1.0,0.75,0.0,115.5,81315.08514576126
+domain:user_preference,full_cache,4,0.25,0.0,0.75,204.5,83423.85002074298
+domain:user_preference,zero_lineage_conflict_values_layers_8_23,4,1.0,0.75,0.0,204.5,73294.60512509104
+paired:full_cache+drop_stale_prompt+zero_lineage_conflict_values_layers_8_23,drop_stale_prompt,4,1.0,0.75,0.0,115.5,81315.08514576126
+paired:full_cache+drop_stale_prompt+zero_lineage_conflict_values_layers_8_23,full_cache,4,0.25,0.0,0.75,204.5,83423.85002074298
+paired:full_cache+drop_stale_prompt+zero_lineage_conflict_values_layers_8_23,zero_lineage_conflict_values_layers_8_23,4,1.0,0.75,0.0,204.5,73294.60512509104
+paired_domain:user_preference,drop_stale_prompt,4,1.0,0.75,0.0,115.5,81315.08514576126
+paired_domain:user_preference,full_cache,4,0.25,0.0,0.75,204.5,83423.85002074298
+paired_domain:user_preference,zero_lineage_conflict_values_layers_8_23,4,1.0,0.75,0.0,204.5,73294.60512509104
