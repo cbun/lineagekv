@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KV Cache Memory Repair Demo</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #162019;
+      --muted: #5f6b63;
+      --line: #cfd8d1;
+      --soft: #f4f7f4;
+      --panel: #ffffff;
+      --good: #0b7a53;
+      --bad: #b34242;
+      --mark: #1f5f8b;
+      --cache: #6f5b2d;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #eef2ef;
+      color: var(--ink);
+    }
+
+    main {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+
+    header {
+      padding: 28px 36px 18px;
+      border-bottom: 1px solid var(--line);
+      background: #fbfcfb;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.15;
+      font-weight: 760;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin-top: 8px;
+      max-width: 900px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.9fr) minmax(420px, 1.3fr) minmax(280px, 0.9fr);
+      gap: 18px;
+      padding: 20px;
+      align-items: stretch;
+    }
+
+    section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .section-title {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #304238;
+      letter-spacing: 0.04em;
+      background: #f8faf8;
+    }
+
+    .memory-list, .panel-body { padding: 14px; }
+
+    .memory {
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 12px;
+      margin-bottom: 10px;
+      background: #fff;
+    }
+
+    .memory.stale { border-left: 4px solid var(--bad); }
+    .memory.current { border-left: 4px solid var(--good); }
+
+    .memory-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 8px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .badge {
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      padding: 3px 8px;
+      font-size: 11px;
+      background: var(--soft);
+      white-space: nowrap;
+    }
+
+    .badge.bad { color: var(--bad); border-color: #e1b5b5; background: #fff4f4; }
+    .badge.good { color: var(--good); border-color: #a9d5c4; background: #f1fbf6; }
+
+    .memory-key {
+      font-size: 12px;
+      color: #425047;
+      margin-bottom: 4px;
+      overflow-wrap: anywhere;
+    }
+
+    .memory-value {
+      font-size: 18px;
+      font-weight: 730;
+      letter-spacing: 0;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      padding: 14px;
+      border-bottom: 1px solid var(--line);
+      background: #fbfcfb;
+    }
+
+    button {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      border-radius: 7px;
+      padding: 9px 10px;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      min-height: 40px;
+    }
+
+    button.active {
+      border-color: #2f6e51;
+      box-shadow: inset 0 0 0 1px #2f6e51;
+      background: #eff8f3;
+    }
+
+    .query {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+      font-size: 18px;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .cache-stage {
+      padding: 20px 18px;
+    }
+
+    .cache-row {
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .row-label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .tokens {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      min-height: 34px;
+      align-content: center;
+    }
+
+    .token {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 6px 8px;
+      font-size: 12px;
+      background: #fff;
+      transition: opacity 160ms ease, transform 160ms ease, background 160ms ease;
+    }
+
+    .token.stale { border-color: #d8a4a4; color: var(--bad); }
+    .token.current { border-color: #93cbb6; color: var(--good); }
+    .token.cache { border-color: #d5c38c; color: var(--cache); background: #fffaf0; }
+    .token.muted { opacity: 0.28; text-decoration: line-through; }
+    .token.boost { background: #ecf8f2; transform: translateY(-1px); }
+
+    .arrow {
+      height: 1px;
+      background: var(--line);
+      position: relative;
+      margin: 18px 0;
+    }
+
+    .arrow::after {
+      content: "";
+      position: absolute;
+      right: -1px;
+      top: -5px;
+      width: 10px;
+      height: 10px;
+      border-top: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      transform: rotate(45deg);
+      background: var(--panel);
+    }
+
+    .answer {
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      background: #fbfcfb;
+    }
+
+    .answer-main {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--good);
+      margin-bottom: 6px;
+    }
+
+    .answer-evidence {
+      font-size: 13px;
+      color: var(--muted);
+      overflow-wrap: anywhere;
+    }
+
+    .metrics {
+      display: grid;
+      gap: 10px;
+      padding: 14px;
+    }
+
+    .metric {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: center;
+      border-bottom: 1px solid #e6ebe7;
+      padding-bottom: 10px;
+    }
+
+    .metric:last-child { border-bottom: 0; padding-bottom: 0; }
+
+    .metric-name {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .metric-value {
+      font-weight: 780;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .note {
+      padding: 14px;
+      border-top: 1px solid var(--line);
+      background: #f8faf8;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 980px) {
+      .workspace {
+        grid-template-columns: 1fr;
+      }
+      header { padding: 22px 20px 14px; }
+      .controls { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Stale Memory KV Repair</h1>
+      <div class="subtitle">The old memory stays in the ledger. The live KV cache is repaired so the stale value no longer steers the answer.</div>
+    </header>
+
+    <div class="workspace">
+      <section>
+        <div class="section-title">Memory Ledger</div>
+        <div class="memory-list">
+          <div class="memory stale">
+            <div class="memory-label">
+              <span>2024-01-05</span>
+              <span class="badge bad">superseded</span>
+            </div>
+            <div class="memory-key">calendar.weekly_review.location</div>
+            <div class="memory-value">Room 3B</div>
+          </div>
+          <div class="memory current">
+            <div class="memory-label">
+              <span>2024-03-20</span>
+              <span class="badge good">current</span>
+            </div>
+            <div class="memory-key">calendar.weekly_review.location</div>
+            <div class="memory-value">Zoom</div>
+          </div>
+          <div class="memory">
+            <div class="memory-label">
+              <span>2024-02-01</span>
+              <span class="badge">distractor</span>
+            </div>
+            <div class="memory-key">repo.install.package_manager</div>
+            <div class="memory-value">pnpm</div>
+          </div>
+          <div class="memory">
+            <div class="memory-label">
+              <span>2024-02-03</span>
+              <span class="badge">distractor</span>
+            </div>
+            <div class="memory-key">ops.deploy.window</div>
+            <div class="memory-value">avoid Friday afternoon</div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-title">Live Inference</div>
+        <div class="controls">
+          <button data-mode="full">Full Cache</button>
+          <button data-mode="delete">Prompt Deletion</button>
+          <button data-mode="repair" class="active">KV Repair</button>
+        </div>
+        <div class="query">Where should I join the weekly review now?</div>
+        <div class="cache-stage">
+          <div class="cache-row">
+            <div class="row-label">Prompt</div>
+            <div class="tokens" id="promptTokens"></div>
+          </div>
+          <div class="arrow"></div>
+          <div class="cache-row">
+            <div class="row-label">KV Cache</div>
+            <div class="tokens" id="cacheTokens"></div>
+          </div>
+          <div class="answer">
+            <div class="answer-main" id="answerText">Zoom</div>
+            <div class="answer-evidence" id="evidenceText">Evidence: weekly_review_location_current</div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-title">What Changes</div>
+        <div class="metrics">
+          <div class="metric">
+            <div class="metric-name">Historical memory retained</div>
+            <div class="metric-value" id="historyMetric">yes</div>
+          </div>
+          <div class="metric">
+            <div class="metric-name">Full prefix reused</div>
+            <div class="metric-value" id="prefixMetric">yes</div>
+          </div>
+          <div class="metric">
+            <div class="metric-name">Stale value influence</div>
+            <div class="metric-value" id="staleMetric">suppressed</div>
+          </div>
+          <div class="metric">
+            <div class="metric-name">Update path at 32k</div>
+            <div class="metric-value" id="speedMetric">38.46x faster</div>
+          </div>
+          <div class="metric">
+            <div class="metric-name">Source provenance</div>
+            <div class="metric-value" id="sourceMetric">current</div>
+          </div>
+        </div>
+        <div class="note" id="modeNote">KV repair keeps every memory in the ledger and edits only the stale value span in the model's live cache.</div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const modes = {
+      full: {
+        prompt: [
+          ["Room 3B", "stale"],
+          ["Zoom", "current"],
+          ["pnpm", ""],
+          ["avoid Friday", ""]
+        ],
+        cache: [
+          ["stale address", "cache"],
+          ["Room 3B value", "stale"],
+          ["current address", "cache"],
+          ["Zoom value", "current"]
+        ],
+        answer: "Zoom",
+        evidence: "Evidence: weekly_review_location_stale + weekly_review_location_current",
+        history: "yes",
+        prefix: "yes",
+        stale: "leaks into sources",
+        speed: "baseline",
+        source: "mixed",
+        note: "Full cache keeps all context, but stale values can still affect evidence or actions."
+      },
+      delete: {
+        prompt: [
+          ["Zoom", "current"],
+          ["pnpm", ""],
+          ["avoid Friday", ""]
+        ],
+        cache: [
+          ["current address", "cache"],
+          ["Zoom value", "current"]
+        ],
+        answer: "Zoom",
+        evidence: "Evidence: weekly_review_location_current",
+        history: "removed from prompt",
+        prefix: "no",
+        stale: "deleted",
+        speed: "slow re-prefill",
+        source: "current",
+        note: "Prompt deletion fixes stale influence, but it rebuilds a cleaned long context."
+      },
+      repair: {
+        prompt: [
+          ["Room 3B", "stale"],
+          ["Zoom", "current"],
+          ["pnpm", ""],
+          ["avoid Friday", ""]
+        ],
+        cache: [
+          ["stale address", "cache"],
+          ["Room 3B value", "stale muted"],
+          ["current address", "cache"],
+          ["Zoom value", "current boost"]
+        ],
+        answer: "Zoom",
+        evidence: "Evidence: weekly_review_location_current",
+        history: "yes",
+        prefix: "yes",
+        stale: "suppressed",
+        speed: "38.46x faster",
+        source: "current",
+        note: "KV repair preserves the full cached history and edits only stale value vectors."
+      }
+    };
+
+    const buttons = [...document.querySelectorAll("button[data-mode]")];
+    const promptTokens = document.querySelector("#promptTokens");
+    const cacheTokens = document.querySelector("#cacheTokens");
+
+    function renderTokens(container, tokens) {
+      container.replaceChildren(...tokens.map(([text, klass]) => {
+        const el = document.createElement("span");
+        el.className = "token";
+        if (klass) {
+          klass.split(" ").forEach(name => el.classList.add(name));
+        }
+        el.textContent = text;
+        return el;
+      }));
+    }
+
+    function setMode(modeName) {
+      const mode = modes[modeName];
+      buttons.forEach(button => button.classList.toggle("active", button.dataset.mode === modeName));
+      renderTokens(promptTokens, mode.prompt);
+      renderTokens(cacheTokens, mode.cache);
+      document.querySelector("#answerText").textContent = mode.answer;
+      document.querySelector("#evidenceText").textContent = mode.evidence;
+      document.querySelector("#historyMetric").textContent = mode.history;
+      document.querySelector("#prefixMetric").textContent = mode.prefix;
+      document.querySelector("#staleMetric").textContent = mode.stale;
+      document.querySelector("#speedMetric").textContent = mode.speed;
+      document.querySelector("#sourceMetric").textContent = mode.source;
+      document.querySelector("#modeNote").textContent = mode.note;
+    }
+
+    buttons.forEach(button => button.addEventListener("click", () => setMode(button.dataset.mode)));
+    setMode("repair");
+  </script>
+</body>
+</html>
