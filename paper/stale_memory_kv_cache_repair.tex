@@ -325,6 +325,47 @@ Key-only and K+V variants apply the analogous edit to $K_{\ell,p}$ or to both
 $K_{\ell,p}$ and $V_{\ell,p}$. The cache edit is local to the current
 inference run and does not alter model weights or delete memory records.
 
+This edit has a simple local interpretation in the Q/K/V attention equations.
+For a single attention head at layer $\ell$, condition on the query vector
+$q_{\ell,t}$ at a generated token position $t$. The attention weights over
+cached prefix positions are
+\[
+  a_{\ell,t,p}
+  =
+  \frac{\exp(q_{\ell,t}^{\top} k_{\ell,p} / \sqrt{d_h})}
+       {\sum_{r \leq t} \exp(q_{\ell,t}^{\top} k_{\ell,r} / \sqrt{d_h})},
+\]
+and the head output is
+\[
+  o_{\ell,t} = \sum_{p \leq t} a_{\ell,t,p} v_{\ell,p}.
+\]
+Under value-only repair, $k'_{\ell,p}=k_{\ell,p}$ and stale values are zeroed
+for $p \in S$. Therefore, for the edited attention operation and fixed
+$q_{\ell,t}$,
+\[
+  a'_{\ell,t,p}=a_{\ell,t,p},
+  \qquad
+  o'_{\ell,t}
+  =
+  o_{\ell,t}
+  -
+  \sum_{p \in S} a_{\ell,t,p} v_{\ell,p}.
+\]
+Value repair thus subtracts the stale value contribution while preserving the
+key-addressed attention distribution. By contrast, key-only repair changes the
+attention logits,
+\[
+  a'_{\ell,t,p}
+  =
+  \frac{\exp(q_{\ell,t}^{\top} k'_{\ell,p} / \sqrt{d_h})}
+       {\sum_{r \leq t} \exp(q_{\ell,t}^{\top} k'_{\ell,r} / \sqrt{d_h})},
+\]
+so it can redistribute attention over all cached positions through the softmax
+denominator. K+V repair both suppresses stale values and perturbs this routing.
+This is a local mechanistic description of one edited attention operation, not
+a claim that downstream residual-stream effects or later-layer queries remain
+unchanged.
+
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}[

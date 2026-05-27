@@ -67,6 +67,49 @@ The method has two phases: memory-write protocol and runtime cache repair.
 
 This differs from prompt deletion. Prompt deletion removes stale records before prefill. KV repair keeps the full prefix/cache and edits the stale value state after prefill.
 
+### Q/K/V Effect
+
+For one attention head, cached keys and values affect the next token through:
+
+```tex
+a_{t,p}
+=
+\frac{\exp(q_t^\top k_p / \sqrt{d_h})}
+     {\sum_{r \le t} \exp(q_t^\top k_r / \sqrt{d_h})}
+```
+
+```tex
+o_t = \sum_{p \le t} a_{t,p} v_p
+```
+
+For a stale span `S`, value-only repair sets:
+
+```tex
+v'_p =
+\begin{cases}
+0, & p \in S \\
+v_p, & p \notin S
+\end{cases}
+```
+
+With keys fixed, the attention weights for that edited operation are unchanged:
+
+```tex
+a'_{t,p} = a_{t,p}
+```
+
+and the output changes by subtracting the stale value contribution:
+
+```tex
+\Delta o_t^{(V)}
+=
+o'_t - o_t
+=
+-\sum_{p \in S} a_{t,p} v_p
+```
+
+Key-only repair instead changes the logits `q_t^T k_p` and the softmax denominator, so it can redistribute attention over all cached positions. K+V repair both changes routing and removes stale value content. This is the local attention-operation view; later layers can still change because the residual stream changes after the edit.
+
 ## Main 7B Result
 
 Model: `mlx-community/Qwen2.5-7B-Instruct-4bit`
