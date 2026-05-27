@@ -8,8 +8,8 @@ results/.matplotlib/
 
 # Local continuity notes are useful in this workspace but should not be part of
 # the public research repo.
-memory/
-notes/
+/memory/
+/notes/
 
 # Raw external datasets and cloned repositories are large, license-sensitive,
 # and reproducible from scripts/fetch_datasets.py or the source URLs.
