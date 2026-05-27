@@ -36,25 +36,25 @@ use the same lineage graph to return current source IDs.
 
 For one attention head, cached keys and values affect a generated token through:
 
-```tex
+$$
 a_{t,p}
 =
 \frac{\exp(q_t^\top k_p / \sqrt{d_h})}
      {\sum_{r \le t} \exp(q_t^\top k_r / \sqrt{d_h})},
 \qquad
 o_t = \sum_{p \le t} a_{t,p} v_p
-```
+$$
 
 For a lineage-stale token span `S`, value-only repair leaves keys fixed and
 zeros stale values. Locally, for that edited attention operation:
 
-```tex
+$$
 a'_{t,p}=a_{t,p},
 \qquad
 o'_t - o_t
 =
 -\sum_{p \in S} a_{t,p} v_p
-```
+$$
 
 So value repair subtracts the stale value contribution while preserving the
 key-addressed attention distribution. Key-only repair instead changes the
